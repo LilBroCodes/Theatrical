@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "theatrical",
+  "version": "${version}",
+  "name": "Theatrical",
+  "description": "A mod that adds some useful features for people who do minecraft roleplay stories",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/theatrical/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.lilbrocodes.theatrical.client.TheatricalClient"
+    ],
+    "main": [
+      "org.lilbrocodes.theatrical.Theatrical"
+    ],
+    "cardinal-components": [
+      "org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents"
+    ]
+  },
+  "mixins": [
+    "theatrical.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "cardinal-components": [
+      "theatrical:hand_held_out",
+      "theatrical:walk_speed"
+    ]
+  },
+  "accessWidener": "theatrical.accesswidener"
+}

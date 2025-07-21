@@ -1,0 +1,21 @@
+{
+  "key.theatrical.hand_hold": "Hold out hand",
+  "key.theatrical.walk_speed_trigger": "Change walk speed",
+  "key.theatrical.walk_speed_modifier": "Increase walk speed step",
+  "theatrical.gui.walk_speed_message": "Walk speed: %d%%",
+
+  "category.theatrical": "Theatrical",
+
+  "theatrical.midnightconfig.title": "Theatrical Settings",
+  "theatrical.midnightconfig.category.controls": "Controls",
+  "theatrical.midnightconfig.category.visuals": "Visuals",
+
+  "theatrical.midnightconfig.allowDuplicateKeybinds": "Allow duplicate keybinds",
+  "theatrical.midnightconfig.rainbowDuplicateKeybinds": "Rainbow color for duplicate keybinds",
+  "theatrical.midnightconfig.rainbowEffectSpeed": "Rainbow effect speed",
+  "theatrical.midnightconfig.showWalkSpeedChangeMessage": "Show walk speed message",
+
+  "theatrical.midnightconfig.enum.BindsMode.NONE": "None",
+  "theatrical.midnightconfig.enum.BindsMode.MC_AND_TH": "Vanilla & Theatrical",
+  "theatrical.midnightconfig.enum.BindsMode.ALL": "All"
+}
