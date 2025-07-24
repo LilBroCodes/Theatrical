@@ -2,7 +2,7 @@ package org.lilbrocodes.theatrical.util;
 
 
 import net.minecraft.client.option.KeyBinding;
-import org.lilbrocodes.theatrical.config.TheatricalConfig;
+import org.lilbrocodes.theatrical.config.Configs;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +12,7 @@ public class DupeBinds {
 
     public static boolean bindAllowed(KeyBinding keyBinding) {
         if (keyBinding == null) return false;
-        return switch (TheatricalConfig.allowDuplicateKeybinds) {
+        return switch (Configs.CLIENT.controls.allowDuplicateKeybinds) {
             case NONE -> false;
             case MC_AND_TH -> MC_TH_BINDS.contains(keyBinding);
             case ALL -> true;

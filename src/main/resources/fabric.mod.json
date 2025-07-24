@@ -31,7 +31,11 @@
   "custom": {
     "cardinal-components": [
       "theatrical:hand_held_out",
-      "theatrical:walk_speed"
+      "theatrical:walk_speed",
+      "theatrical:countdowns",
+      "theatrical:countdown_attempts",
+      "theatrical:director",
+      "theatrical:plot_armor"
     ]
   },
   "accessWidener": "theatrical.accesswidener"

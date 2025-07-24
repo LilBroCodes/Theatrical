@@ -6,16 +6,38 @@
 
   "category.theatrical": "Theatrical",
 
-  "theatrical.midnightconfig.title": "Theatrical Settings",
-  "theatrical.midnightconfig.category.controls": "Controls",
-  "theatrical.midnightconfig.category.visuals": "Visuals",
+  "command.theatrical.countdown.success": "Successfully scheduled a countdown of %d seconds for %d player%s",
+  "command.theatrical.director.plot_armor.player_no_holder": "The targeted player cannot store the plot armor type data. This is a bug in the mod and should never be possible, please report what conditions lead to this outcome on the GitHub repository's issues page.",
+  "command.theatrical.director.plot_armor.success": "Set the plot armor type of %s to %s.",
+  "command.theatrical.director.director.player_no_holder": "The targeted player cannot store the director data. This is a bug in the mod and should never be possible, please report what conditions lead to this outcome on the GitHub repository's issues page.",
+  "command.theatrical.director.director.turned_on": "Made %s a director.",
+  "command.theatrical.director.director.turned_off": "Made %s no longer a director.",
+  "exception.theatrical.not_director": "You are not an operator, or a director!",
 
-  "theatrical.midnightconfig.allowDuplicateKeybinds": "Allow duplicate keybinds",
-  "theatrical.midnightconfig.rainbowDuplicateKeybinds": "Rainbow color for duplicate keybinds",
-  "theatrical.midnightconfig.rainbowEffectSpeed": "Rainbow effect speed",
-  "theatrical.midnightconfig.showWalkSpeedChangeMessage": "Show walk speed message",
+  "theatrical.countdown.state.unknown": "Unknown",
 
-  "theatrical.midnightconfig.enum.BindsMode.NONE": "None",
-  "theatrical.midnightconfig.enum.BindsMode.MC_AND_TH": "Vanilla & Theatrical",
-  "theatrical.midnightconfig.enum.BindsMode.ALL": "All"
+  "theatrical.countdown.state.not_in_cooldown": "Not in another cooldown",
+  "theatrical.countdown.state.in_cooldown": "In another cooldown",
+
+  "theatrical.countdown.state.vc.not_loaded": "Does not have voicechat",
+  "theatrical.countdown.state.vc.started": "Will start recording audio",
+  "theatrical.countdown.state.vc.recording": "Recording audio",
+  "theatrical.countdown.state.vc.stopped": "Not recording audio",
+  "theatrical.countdown.state.vc.disabled": "Audio check disabled",
+
+  "theatrical.countdown.state.rm.not_loaded": "Does not have replaymod",
+  "theatrical.countdown.state.rm.started": "Will start recording replay",
+  "theatrical.countdown.state.rm.recording": "Recording replay",
+  "theatrical.countdown.state.rm.stopped": "Not recording replay",
+  "theatrical.countdown.state.rm.disabled": "Replay check disabled",
+
+  "theatrical.toast.countdown.progress": "%.1f",
+  "theatrical.toast.countdown.done": "Start!",
+  "command.theatrical.countdown.fail1": "Failed to get a response from all selected players in the configured amount of time, please try again.",
+  "command.theatrical.countdown.fail2": "Not all players are ready to start the scene!\n",
+  "theatrical.countdown.state.info": "Player states:\n",
+
+  "theatrical.binds_mode.NONE": "None",
+  "theatrical.binds_mode.MC_AND_TH": "Vanilla & Theatrical",
+  "theatrical.binds_mode.ALL": "All"
 }

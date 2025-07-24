@@ -15,9 +15,17 @@ loom {
 }
 
 repositories {
+    mavenCentral()
     maven {
-        name = "Modrinth Maven [MidnightLib]"
+        name = "Modrinth"
         url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
+    maven {
+        name = "FzzyMaven [Fzzy Config]"
+        url = "https://maven.fzzyhmstrs.me/"
     }
     maven {
         name = "Ladysnake [Composer]"
@@ -36,10 +44,16 @@ dependencies {
 
     include modApi("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cca_version}")
     include modApi("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cca_version}")
+    include modApi("dev.onyxstudios.cardinal-components-api:cardinal-components-world:${project.cca_version}")
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "org.lilbrocodes:composer-reloaded:${project.composer_version}"
 
-    modImplementation include ("maven.modrinth:midnightlib:${project.midnightlib_version}")
+    modImplementation "me.fzzyhmstrs:fzzy_config:${project.fzzy_version}+${project.minecraft_version}"
+
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+
+    compileOnly("maven.modrinth:simple-voice-chat:fabric-${project.voicechat}")
+    compileOnly("maven.modrinth:replaymod:${project.replaymod}")
 }
 
 processResources {

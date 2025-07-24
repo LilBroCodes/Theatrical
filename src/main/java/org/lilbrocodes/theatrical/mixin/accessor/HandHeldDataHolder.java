@@ -1,6 +1,6 @@
 package org.lilbrocodes.theatrical.mixin.accessor;
 
-public interface PlayerHandHeld {
+public interface HandHeldDataHolder {
     default boolean theatrical$isHandHeldOut() {
         return false;
     }

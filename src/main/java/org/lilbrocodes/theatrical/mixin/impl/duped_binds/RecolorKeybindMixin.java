@@ -5,7 +5,8 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import org.lilbrocodes.theatrical.config.TheatricalConfig;
+import org.lilbrocodes.theatrical.config.Configs;
+import org.lilbrocodes.theatrical.config.TheatricalClientConfig;
 import org.lilbrocodes.theatrical.util.DupeBinds;
 import org.lilbrocodes.theatrical.util.RainbowColor;
 import org.spongepowered.asm.mixin.Final;
@@ -25,7 +26,7 @@ public abstract class RecolorKeybindMixin {
         if (DupeBinds.bindAllowed(binding)) {
             RainbowColor.stepColor();
             this.update();
-            return TheatricalConfig.rainbowDuplicateKeybinds ?
+            return Configs.CLIENT.visuals.rainbowDuplicateKeybinds ?
                     RainbowColor.currentColor :
                     Formatting.AQUA.getColorValue() | 0xFF000000;
         } else {
@@ -36,7 +37,7 @@ public abstract class RecolorKeybindMixin {
     @ModifyArg(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/ButtonWidget;setMessage(Lnet/minecraft/text/Text;)V", ordinal = 1))
     private Text flowed_combat$updateBindingColor(Text value) {
         if (DupeBinds.bindAllowed(binding)) {
-            return TheatricalConfig.rainbowDuplicateKeybinds ?
+            return Configs.CLIENT.visuals.rainbowDuplicateKeybinds ?
                     binding.getBoundKeyLocalizedText().copy().setStyle(Style.EMPTY.withColor(RainbowColor.currentColor)) :
                     binding.getBoundKeyLocalizedText().copy().formatted(Formatting.AQUA);
         } else {

@@ -1,6 +1,7 @@
 package org.lilbrocodes.theatrical.util;
 
-import org.lilbrocodes.theatrical.config.TheatricalConfig;
+import org.lilbrocodes.theatrical.config.Configs;
+import org.lilbrocodes.theatrical.config.TheatricalClientConfig;
 
 import java.awt.*;
 
@@ -29,7 +30,7 @@ public class RainbowColor {
     }
 
     public static void stepColor() {
-        if (tick >= 10 - TheatricalConfig.rainbowEffectSpeed) {
+        if (tick >= 10 - Configs.CLIENT.visuals.rainbowEffectSpeed.get()) {
             tick = 0;
             currentColor = getNextColor();
         } else {

@@ -3,7 +3,7 @@ package org.lilbrocodes.theatrical.mixin.impl;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Arm;
-import org.lilbrocodes.theatrical.mixin.accessor.PlayerHandHeld;
+import org.lilbrocodes.theatrical.mixin.accessor.HandHeldDataHolder;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +18,7 @@ public class BipedEntityModelMixin<T extends LivingEntity> {
             T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch,
             CallbackInfo ci
     ) {
-        if (!(entity instanceof PlayerHandHeld held)) return;
+        if (!(entity instanceof HandHeldDataHolder held)) return;
 
         if (held.theatrical$isHandHeldOut()) {
             BipedEntityModel<T> model = (BipedEntityModel<T>) (Object) this;
