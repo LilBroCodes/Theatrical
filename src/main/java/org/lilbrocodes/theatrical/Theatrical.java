@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.commands.CountdownCommand;
 import org.lilbrocodes.theatrical.commands.DirectorCommand;
+import org.lilbrocodes.theatrical.commands.SceneCommand;
 import org.lilbrocodes.theatrical.commands.argument_type.PlayerListArgumentSerializer;
 import org.lilbrocodes.theatrical.commands.argument_type.PlayerListArgumentType;
 import org.lilbrocodes.theatrical.commands.argument_type.PlotArmorArgumentType;
@@ -30,10 +31,13 @@ public class Theatrical implements ModInitializer {
 
     public static final Identifier COUNTDOWNS = identify("countdowns");
     public static final Identifier COUNTDOWN_ATTEMPTS = identify("countdown_attempts");
+    public static final Identifier SCENES = identify("scenes");
     public static final Identifier PLAYER_LIST = identify("player_list");
     public static final Identifier PLOT_ARMOR_TYPE = identify("plot_armor_type");
     public static final Identifier DIRECTOR_PACKET = identify("director");
     public static final Identifier PLOT_ARMOR_PACKET = identify("plot_armor");
+    public static final Identifier LOCKED_PACKET = identify("locked");
+    public static final Identifier VISUALISED_SCENES_PACKET = identify("visualised_scenes");
 
     /** Packet: tell server whether player is holding out their hand.
      *  <p>Payload: {@code boolean} value.
@@ -75,8 +79,9 @@ public class Theatrical implements ModInitializer {
         ArgumentTypeRegistry.registerArgumentType(PLAYER_LIST, PlayerListArgumentType.class, PlayerListArgumentSerializer.INSTANCE);
         ArgumentTypeRegistry.registerArgumentType(PLOT_ARMOR_TYPE, PlotArmorArgumentType.class, ConstantArgumentSerializer.of(PlotArmorArgumentType::plotArmor));
 
-        CommandRegistrationCallback.EVENT.register(CountdownCommand::register);
-        CommandRegistrationCallback.EVENT.register(DirectorCommand::register);
+        CommandRegistrationCallback.EVENT.register(new CountdownCommand()::register);
+        CommandRegistrationCallback.EVENT.register(new DirectorCommand()::register);
+        CommandRegistrationCallback.EVENT.register(new SceneCommand()::register);
 
         Configs.initialize();
 

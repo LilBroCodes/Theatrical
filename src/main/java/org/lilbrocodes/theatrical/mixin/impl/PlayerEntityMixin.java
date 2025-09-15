@@ -8,10 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.config.Configs;
-import org.lilbrocodes.theatrical.mixin.accessor.DirectorDataHolder;
-import org.lilbrocodes.theatrical.mixin.accessor.HandHeldDataHolder;
-import org.lilbrocodes.theatrical.mixin.accessor.PlotArmorDataHolder;
-import org.lilbrocodes.theatrical.mixin.accessor.WalkSpeedHolder;
+import org.lilbrocodes.theatrical.mixin.accessor.*;
 import org.lilbrocodes.theatrical.util.PlotArmorType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin extends LivingEntity implements HandHeldDataHolder, WalkSpeedHolder, DirectorDataHolder, PlotArmorDataHolder {
+public abstract class PlayerEntityMixin extends LivingEntity implements HandHeldDataHolder, WalkSpeedHolder, DirectorDataHolder, PlotArmorDataHolder, LockedDataHolder {
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -64,9 +61,19 @@ public abstract class PlayerEntityMixin extends LivingEntity implements HandHeld
         TheatricalCardinalComponents.PLOT_ARMOR_TYPE.get(this).setType(type);
     }
 
+    @Override
+    public boolean theatrical$isLocked() {
+        return TheatricalCardinalComponents.LOCKED.get(this).isLocked();
+    }
+
+    @Override
+    public void theatrical$setLocked(boolean locked) {
+        TheatricalCardinalComponents.LOCKED.get(this).setLocked(locked);
+    }
+
     @ModifyReturnValue(method = "getMovementSpeed", at = @At("TAIL"))
     public float theatrical$applyMovementSpeed(float original) {
-        return original * (theatrical$getWalkSpeed() / 100f);
+        return original * (theatrical$getWalkSpeed() / 100f) * (theatrical$isLocked() ? 0.0f : 1.0f);
     }
 
     @Inject(method = "applyDamage", at = @At("TAIL"))

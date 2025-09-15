@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +13,7 @@ import org.lilbrocodes.composer_reloaded.api.toast.ToastManager;
 import org.lilbrocodes.theatrical.Theatrical;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.cca.world.CountdownInstanceHolderComponent;
+import org.lilbrocodes.theatrical.client.render.SceneVisualizer;
 import org.lilbrocodes.theatrical.client.toast.CountdownToast;
 import org.lilbrocodes.theatrical.integrations.CooldownChecks;
 import org.lilbrocodes.theatrical.mixin.accessor.HandHeldDataHolder;
@@ -71,6 +73,7 @@ public class TheatricalClient implements ClientModInitializer {
            checksPassed.addAll(CooldownChecks.runChecks());
            countdownFeedback(checksPassed);
         });
+
         ClientPlayNetworking.registerGlobalReceiver(Theatrical.START_COUNTDOWN_PACKET, (client, handler, buf, sender) -> {
             CooldownChecks.fixChecks();
             ToastManager.getInstance().addToast(new CountdownToast(buf.readInt()), ToastManager.Corner.TOP_RIGHT);
@@ -102,5 +105,7 @@ public class TheatricalClient implements ClientModInitializer {
                 }
             }
         });
+
+        WorldRenderEvents.AFTER_ENTITIES.register(new SceneVisualizer());
     }
 }

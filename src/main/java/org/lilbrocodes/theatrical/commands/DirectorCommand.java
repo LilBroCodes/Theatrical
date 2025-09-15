@@ -13,10 +13,10 @@ import org.lilbrocodes.theatrical.mixin.accessor.DirectorDataHolder;
 import org.lilbrocodes.theatrical.mixin.accessor.PlotArmorDataHolder;
 import org.lilbrocodes.theatrical.util.Misc;
 import org.lilbrocodes.theatrical.util.PlotArmorType;
-import org.lilbrocodes.theatrical.util.TextUtil;
 
 public class DirectorCommand extends CommandUtil {
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {
+    @Override
+    public void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {
         dispatcher.register(CommandManager.literal("director")
                 .then(CommandManager.literal("plot_armor")
                         .then(CommandManager.argument("player", EntityArgumentType.player())
@@ -33,7 +33,7 @@ public class DirectorCommand extends CommandUtil {
                                             PlotArmorType type = PlotArmorArgumentType.getPlotArmorType(ctx, "type");
                                             holder.theatrical$setType(type);
 
-                                            feedback(ctx, TextUtil.replaceTranslatable("command.theatrical.director.plot_armor.success", player.getName().getString(), type.asString()));
+                                            feedback(ctx, Text.translatable("command.theatrical.director.plot_armor.success", player.getName().getString(), type.asString()));
                                             return 1;
                                         })
                                 )
@@ -53,7 +53,7 @@ public class DirectorCommand extends CommandUtil {
                                             boolean value = BoolArgumentType.getBool(ctx, "value");
                                             holder.theatrical$setDirector(value);
 
-                                            feedback(ctx,TextUtil.replaceTranslatable( value ? "command.theatrical.director.director.turned_on" : "command.theatrical.director.director.turned_off", player.getName().getString()));
+                                            feedback(ctx, Text.translatable(value ? "command.theatrical.director.director.turned_on" : "command.theatrical.director.director.turned_off", player.getName().getString()));
                                             return 1;
                                         })
                                 )

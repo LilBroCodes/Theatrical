@@ -9,7 +9,7 @@
     "PlayerEntityMixin"
   ],
   "client": [
-    "BipedEntityModelMixin",
+    "PlayerEntityModelMixin",
     "ConnectionEventHandlerMixin",
     "PlayerInventoryMixin",
     "duped_binds.GetBindsMixin",

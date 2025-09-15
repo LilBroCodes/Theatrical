@@ -8,10 +8,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.commands.argument_type.PlayerListArgumentType;
 import org.lilbrocodes.theatrical.util.Misc;
-import org.lilbrocodes.theatrical.util.TextUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,8 +20,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class CountdownCommand extends CommandUtil {
-
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {
+    @Override
+    public void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment) {
         dispatcher.register(CommandManager.literal("countdown")
                 .then(CommandManager.literal("radius")
                         .then(CommandManager.argument("radius", IntegerArgumentType.integer(0, 128))
@@ -43,7 +43,7 @@ public class CountdownCommand extends CommandUtil {
                                                     .get(player.getWorld())
                                                     .create(player.getUuid(), playerIds, duration * 20);
 
-                                            feedback(ctx, TextUtil.replaceTranslatable("command.theatrical.countdown.success", duration, playerIds.size(), Misc.getQuantifier(playerIds)));
+                                            feedback(ctx, Text.translatable("command.theatrical.countdown.success", duration, playerIds.size(), Misc.getQuantifier(playerIds)));
                                             return 1;
                                         })
                                 )
@@ -69,7 +69,7 @@ public class CountdownCommand extends CommandUtil {
                                                     .get(player.getWorld())
                                                     .create(player.getUuid(), uuids, duration * 20);
 
-                                            feedback(ctx, TextUtil.replaceTranslatable("command.theatrical.countdown.success", duration, uuids.size(), Misc.getQuantifier(uuids)));
+                                            feedback(ctx, Text.translatable("command.theatrical.countdown.success", duration, uuids.size(), Misc.getQuantifier(uuids)));
                                             return 1;
                                         })
                                 )
@@ -91,7 +91,7 @@ public class CountdownCommand extends CommandUtil {
                                                     .get(player.getWorld())
                                                     .create(player.getUuid(), uniqueUuids, duration * 20);
 
-                                            feedback(ctx, TextUtil.replaceTranslatable("command.theatrical.countdown.success", duration, uniqueUuids.size(), Misc.getQuantifier(uniqueUuids)));
+                                            feedback(ctx, Text.translatable("command.theatrical.countdown.success", duration, uniqueUuids.size(), Misc.getQuantifier(uniqueUuids)));
                                             return 1;
                                         })
                                 )

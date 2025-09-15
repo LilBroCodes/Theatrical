@@ -11,11 +11,13 @@ import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.lilbrocodes.theatrical.Theatrical;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.util.CountdownInstance;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,7 +38,7 @@ public class CountdownInstanceHolderComponent implements ServerTickingComponent,
     }
 
     @Override
-    public void writeToNbt(NbtCompound tag) {
+    public void writeToNbt(@NotNull NbtCompound tag) {
         NbtList countdowns = new NbtList();
         for (CountdownInstance countdown : holder) {
             countdowns.add(countdown.writeToNbt(new NbtCompound()));
@@ -66,7 +68,12 @@ public class CountdownInstanceHolderComponent implements ServerTickingComponent,
 
     @Override
     public void serverTick() {
-        holder.removeIf(CountdownInstance::tick);
+        Iterator<CountdownInstance> iterator = holder.iterator();
+        while (iterator.hasNext()) {
+            CountdownInstance countdown = iterator.next();
+            TheatricalCardinalComponents.SCENES.get(world).tryStart(countdown.players);
+            if (countdown.tick()) iterator.remove();
+        }
         sync();
     }
 }

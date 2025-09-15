@@ -53,14 +53,6 @@ public class CountdownInstance {
     }
 
     public boolean tick() {
-        progress++;
-        if (progress >= duration) {
-            return true;
-        }
-
-        if (progress % 20 == 0) {
-            int secondsLeft = (duration - progress) / 20;
-        }
-        return false;
+        return progress++ >= duration;
     }
 }

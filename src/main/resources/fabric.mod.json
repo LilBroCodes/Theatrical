@@ -35,7 +35,10 @@
       "theatrical:countdowns",
       "theatrical:countdown_attempts",
       "theatrical:director",
-      "theatrical:plot_armor"
+      "theatrical:plot_armor",
+      "theatrical:locked",
+      "theatrical:scenes",
+      "theatrical:visualised_scenes"
     ]
   },
   "accessWidener": "theatrical.accesswidener"

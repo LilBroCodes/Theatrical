@@ -1,27 +1,22 @@
 package org.lilbrocodes.theatrical.commands;
 
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 
-public class CommandUtil {
-    public static void feedback(CommandContext<ServerCommandSource> ctx, String message) {
-        feedback(ctx, Text.literal(message));
-    }
-
+public abstract class CommandUtil {
     public static void feedback(CommandContext<ServerCommandSource> src, Text message) {
         src.getSource().sendFeedback(() -> appendPrefix(message), false);
     }
 
     public static void feedback(PlayerEntity player, Text message) {
         player.sendMessage(appendPrefix(message), false);
-    }
-
-    public static void feedback(PlayerEntity player, String message) {
-       feedback(player, Text.literal(message));
     }
 
     public static Text appendPrefix(Text text) {
@@ -43,4 +38,6 @@ public class CommandUtil {
 
         return prefix.append(text);
     }
+
+    public abstract void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, CommandManager.RegistrationEnvironment environment);
 }

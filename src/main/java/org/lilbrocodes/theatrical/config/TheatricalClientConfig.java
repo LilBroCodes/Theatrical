@@ -14,6 +14,11 @@ public class TheatricalClientConfig extends Config {
         super(Theatrical.identify("client_config"));
     }
 
+    public static final int CONFIG_VERSION = 2;
+
+    @Prefix("Used for keeping track of what config version you have, and running some data fixes if needed. Changing it will currently reset your client config to default.")
+    public int configVersion = CONFIG_VERSION;
+
     @Override
     public int defaultPermLevel() {
         return 0;
@@ -39,7 +44,7 @@ public class TheatricalClientConfig extends Config {
 
         public static class VoicechatSection extends ConfigSection {
             @Prefix("If enabled, upon starting a countdown - instead of reporting that audio is not being recorded, it starts recording automatically")
-            public boolean autoStartRecording = true;
+            public boolean autoStartRecording = false;
 
             @Prefix("If enabled, it will require that you are recording voicechat audio if a countdown gets started with you in it")
             public boolean checkForRecording = false;
@@ -47,7 +52,7 @@ public class TheatricalClientConfig extends Config {
 
         public static class ReplaymodSection extends ConfigSection {
             @Prefix("If enabled, upon starting a countdown - instead of reporting that a replay is not being recorded, it starts recording automatically")
-            public boolean autoStartRecording = true;
+            public boolean autoStartRecording = false;
 
             @Prefix("If enabled, it will require that you are recording a replay if a countdown gets started with you in it")
             public boolean checkForRecording = false;
