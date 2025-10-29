@@ -71,8 +71,10 @@ public class CountdownInstanceHolderComponent implements ServerTickingComponent,
         Iterator<CountdownInstance> iterator = holder.iterator();
         while (iterator.hasNext()) {
             CountdownInstance countdown = iterator.next();
-            TheatricalCardinalComponents.SCENES.get(world).tryStart(countdown.players);
-            if (countdown.tick()) iterator.remove();
+            if (countdown.tick()) {
+                TheatricalCardinalComponents.SCENES.get(world).tryStart(countdown.players);
+                iterator.remove();
+            }
         }
         sync();
     }

@@ -318,7 +318,7 @@ public class SceneCommand extends CommandUtil {
         List<UUID> actors = scene.actors();
         TheatricalCardinalComponents.COUNTDOWN_ATTEMPTS.get(player.getWorld()).create(player.getUuid(), actors, duration);
 
-        feedback(ctx, Text.translatable("command.theatrical.countdown.success", duration, actors.size(), Misc.getQuantifier(actors)));
+        feedback(ctx, Text.translatable("command.theatrical.countdown.success", duration / 20, actors.size(), Misc.getQuantifier(actors)));
         return 1;
     }
 

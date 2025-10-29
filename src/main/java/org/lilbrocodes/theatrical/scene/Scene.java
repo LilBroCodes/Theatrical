@@ -127,7 +127,7 @@ public class Scene {
     }
 
     public void loadWorldState() {
-        if (world instanceof ServerWorld sw) {
+        if (world instanceof ServerWorld sw && worldState != null) {
             sw.setTimeOfDay(worldState.time);
             sw.setWeather(0, 60 * 30 * 20, worldState.raining, worldState.thundering);
         }
@@ -215,7 +215,7 @@ public class Scene {
         tag.putBoolean("loadStates", loadStates);
         tag.putBoolean("loadWorldState", loadWorldState);
 
-        tag.put("WorldState", worldState == null ? new NbtCompound() : worldState.writeNbt(new NbtCompound()));
+        tag.put("worldState", worldState == null ? new NbtCompound() : worldState.writeNbt(new NbtCompound()));
 
         return tag;
     }
@@ -259,7 +259,7 @@ public class Scene {
             }
         });
 
-        WorldState worldState = WorldState.readNbt(tag.getCompound("WorldState"));
+        WorldState worldState = WorldState.readNbt(tag.getCompound("worldState"));
 
         boolean loadStates = tag.getBoolean("loadStates");
         boolean loadWorldState = tag.getBoolean("loadWorldState");

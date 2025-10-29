@@ -9,8 +9,8 @@
     "PlayerEntityMixin"
   ],
   "client": [
-    "PlayerEntityModelMixin",
     "ConnectionEventHandlerMixin",
+    "PlayerEntityModelMixin",
     "PlayerInventoryMixin",
     "duped_binds.GetBindsMixin",
     "duped_binds.RecolorKeybindMixin",

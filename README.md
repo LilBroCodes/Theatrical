@@ -48,6 +48,12 @@ Use the `/director` command to configure:
 
 ---
 
+### Scenes
+I'm lazy to make the description for these rn but they are very useful <br>
+Try the `/scene` command for more info
+
+---
+
 # Configuration
 Theatrical has both **client-side** and **server-side** configs.<br>
 On a local world (or if you are an operator), you can modify the **server-side** config from the client.
