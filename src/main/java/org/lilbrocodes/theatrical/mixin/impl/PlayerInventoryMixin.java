@@ -26,7 +26,7 @@ public class PlayerInventoryMixin {
             int value = TheatricalClient.WALK_SPEED_MODIFIER.isPressed() ? 5 : 1;
             walkSpeedHolder.theatrical$setWalkSpeed(MathHelper.clamp(walkSpeedHolder.theatrical$getWalkSpeed() + (i * value), 0, 100));
 
-            if (Configs.CLIENT.visuals.showWalkSpeedChangeMessage) {
+            if (Configs.CLIENT.showWalkSpeedChangeMessage) {
                 MinecraftClient.getInstance().inGameHud.setOverlayMessage(
                         Text.literal(String.format(Text.translatable("theatrical.gui.walk_speed_message").getString(), walkSpeedHolder.theatrical$getWalkSpeed()))
                                 .styled(style -> style.withColor(Misc.mixSpeedColor(walkSpeedHolder.theatrical$getWalkSpeed()))),

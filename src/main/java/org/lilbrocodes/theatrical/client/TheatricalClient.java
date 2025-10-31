@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import org.lilbrocodes.composer_reloaded.api.toast.ToastManager;
+import org.lilbrocodes.composer_reloaded.client.duped_binds.BindTracker;
 import org.lilbrocodes.theatrical.Theatrical;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
 import org.lilbrocodes.theatrical.cca.world.CountdownInstanceHolderComponent;
@@ -52,9 +53,9 @@ public class TheatricalClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        KeyBindingHelper.registerKeyBinding(HAND_HOLD_BIND);
-        KeyBindingHelper.registerKeyBinding(WALK_SPEED_TRIGGER);
-        KeyBindingHelper.registerKeyBinding(WALK_SPEED_MODIFIER);
+        registerBind(HAND_HOLD_BIND);
+        registerBind(WALK_SPEED_TRIGGER);
+        registerBind(WALK_SPEED_MODIFIER);
 
 
         ClientPlayNetworking.registerGlobalReceiver(Theatrical.COUNTDOWN_PING_PACKET, (client, handler, buf, sender) -> {
@@ -107,5 +108,10 @@ public class TheatricalClient implements ClientModInitializer {
         });
 
         WorldRenderEvents.AFTER_ENTITIES.register(new SceneVisualizer());
+    }
+
+    public static void registerBind(KeyBinding keyBinding) {
+        KeyBindingHelper.registerKeyBinding(keyBinding);
+        BindTracker.MC_CM_BINDS.add(keyBinding);
     }
 }

@@ -11,10 +11,7 @@
   "client": [
     "ConnectionEventHandlerMixin",
     "PlayerEntityModelMixin",
-    "PlayerInventoryMixin",
-    "duped_binds.GetBindsMixin",
-    "duped_binds.RecolorKeybindMixin",
-    "duped_binds.TriggerAllBindsMixin"
+    "PlayerInventoryMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -54,9 +54,5 @@
   "theatrical.toast.countdown.done": "Start!",
   "command.theatrical.countdown.fail1": "Failed to get a response from all selected players in the configured amount of time, please try again.",
   "command.theatrical.countdown.fail2": "Not all players are ready to start the scene!\n",
-  "theatrical.countdown.state.info": "Player states:\n",
-
-  "theatrical.binds_mode.NONE": "None",
-  "theatrical.binds_mode.MC_AND_TH": "Vanilla & Theatrical",
-  "theatrical.binds_mode.ALL": "All"
+  "theatrical.countdown.state.info": "Player states:\n"
 }

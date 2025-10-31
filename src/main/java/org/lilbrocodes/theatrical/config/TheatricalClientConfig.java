@@ -4,10 +4,8 @@ import me.fzzyhmstrs.fzzy_config.api.FileType;
 import me.fzzyhmstrs.fzzy_config.api.SaveType;
 import me.fzzyhmstrs.fzzy_config.config.Config;
 import me.fzzyhmstrs.fzzy_config.config.ConfigSection;
-import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedInt;
 import org.jetbrains.annotations.NotNull;
 import org.lilbrocodes.theatrical.Theatrical;
-import org.lilbrocodes.theatrical.util.BindsMode;
 
 public class TheatricalClientConfig extends Config {
     public TheatricalClientConfig() {
@@ -34,8 +32,6 @@ public class TheatricalClientConfig extends Config {
         return SaveType.SEPARATE;
     }
 
-    public VisualsSection visuals = new VisualsSection();
-    public ControlsSection controls = new ControlsSection();
     public ChecksSection checks = new ChecksSection();
 
     public static class ChecksSection extends ConfigSection {
@@ -59,26 +55,8 @@ public class TheatricalClientConfig extends Config {
         }
     }
 
-    public static class VisualsSection extends ConfigSection {
-
-        @Name("Rainbow Effect on Duplicate Keybinds")
-        public boolean rainbowDuplicateKeybinds = false;
-
-        @Name("Rainbow Effect Speed")
-        public ValidatedInt rainbowEffectSpeed = new ValidatedInt(3, 10, 1);
-
-        @Name("Show Walk Speed Change Message")
-        public boolean showWalkSpeedChangeMessage = true;
-    }
-
-    public static class ControlsSection extends ConfigSection {
-        public ControlsSection() {
-            super();
-        }
-
-        @Name("Allow Duplicate Keybinds")
-        public BindsMode allowDuplicateKeybinds = BindsMode.MC_AND_TH;
-    }
+    @Name("Show Walk Speed Change Message")
+    public boolean showWalkSpeedChangeMessage = true;
 
     @Override
     public @NotNull String translationKey() {

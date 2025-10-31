@@ -1,5 +1,6 @@
 plugins {
     id 'fabric-loom' version '1.10.2'
+    id 'com.modrinth.minotaur' version '2.+'
     id 'maven-publish'
 }
 
@@ -88,5 +89,19 @@ java {
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
+    }
+}
+
+modrinth {
+    projectId = "theatrical-mod"
+    uploadFile = remapJar
+    versionName = "Theatrical $version"
+    gameVersions = [minecraft_version.toString()]
+    dependencies {
+        required.project "composer-reloaded"
+        required.project "cardinal-components-api"
+        required.project "fzzy-config"
+        optional.project "simple-voice-chat"
+        optional.project "replaymod"
     }
 }

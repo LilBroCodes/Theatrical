@@ -29,6 +29,7 @@
     "minecraft": "${minecraft_version}"
   },
   "custom": {
+    "composer-duped-keybinds": true,
     "cardinal-components": [
       "theatrical:hand_held_out",
       "theatrical:walk_speed",
