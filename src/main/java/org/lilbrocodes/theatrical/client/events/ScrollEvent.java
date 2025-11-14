@@ -8,7 +8,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
-import org.lilbrocodes.composer_reloaded.api.controls.scroll.ScrollEvents.ScrollAction;
+import org.lilbrocodes.composer_reloaded.api.events.ScrollEvents.ScrollAction;
 import org.lilbrocodes.theatrical.client.TheatricalClient;
 import org.lilbrocodes.theatrical.config.Configs;
 import org.lilbrocodes.theatrical.mixin.accessor.WalkSpeedHolder;

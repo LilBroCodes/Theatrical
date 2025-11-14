@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
-import org.lilbrocodes.composer_reloaded.api.controls.scroll.ScrollEvents;
+import org.lilbrocodes.composer_reloaded.api.events.ScrollEvents;
 import org.lilbrocodes.composer_reloaded.api.toast.ToastManager;
 import org.lilbrocodes.theatrical.Theatrical;
 import org.lilbrocodes.theatrical.cca.TheatricalCardinalComponents;
